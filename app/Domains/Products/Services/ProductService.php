@@ -7,12 +7,11 @@ use App\Domains\Products\Models\Products;
 
 class ProductService
 {
-    public function createProduct(array $data): Products
+    public function createProduct(array $data, int $warehouseId, int $stock): Products
     {
         $product = Products::create($data);
 
-        // Dispatch event
-        ProductCreated::dispatch($product);
+        event(new ProductCreated($product,$warehouseId, $stock));
 
         return $product;
     }

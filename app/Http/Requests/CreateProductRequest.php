@@ -19,11 +19,13 @@ class CreateProductRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
+            'warehouse_id' => 'required|integer|exists:warehouses,id',
+            'stock' => 'required|integer|min:0',
         ];
     }
 
