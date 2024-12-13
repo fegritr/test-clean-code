@@ -12,13 +12,11 @@ class ProductController extends Controller
 
     public function __construct(ProductService $productService)
     {
-        dd('a');
         $this->productService = $productService;
     }
 
     public function store(CreateProductRequest $request): JsonResponse
     {
-        dd('a');
         $product = $this->productService->createProduct($request->validated());
 
         return response()->json(['message' => 'Product created', 'product' => $product], 201);
