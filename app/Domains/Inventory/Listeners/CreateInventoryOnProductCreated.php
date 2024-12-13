@@ -26,7 +26,6 @@ class CreateInventoryOnProductCreated
         $warehouseId = $event->warehouseId;
         $stock = $event->stock;
 
-        // Membuat inventory untuk produk yang baru dibuat
         $this->inventoryService->updateInventory($product->id, $warehouseId, $stock);
     }
 }

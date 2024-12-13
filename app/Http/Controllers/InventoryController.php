@@ -22,7 +22,6 @@ class InventoryController extends Controller
     {
         $validated = $request->validated();
 
-        // Memanggil service untuk memperbarui inventory
         $this->inventoryService->updateInventory($productId, $validated['warehouse_id'], $validated['quantity']);
 
         return response()->json(['message' => 'Inventory updated successfully']);

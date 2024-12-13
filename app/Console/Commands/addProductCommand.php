@@ -67,27 +67,23 @@ class AddProductCommand extends Command
         }
 
         try {
-            // Prepare the product data
             $data = [
                 'name' => $name,
                 'price' => $price,
                 'category_id' => $categoryId,
             ];
 
-            // Call the ProductService to create the product and inventory
             $product = $this->productService->createProduct($data, $warehouseId, $stock);
 
-            // Provide feedback
             $this->info('Product added successfully!');
             $this->line('Product ID: ' . $product->id);
             $this->line('Name: ' . $product->name);
             $this->line('Price: ' . $product->price);
             $this->line('Stock: ' . $stock);
         } catch (\Exception $e) {
-            // Handle errors
             $this->error('An error occurred while adding the product: ' . $e->getMessage());
         }
 
-        return 0;  // Return success
+        return 0; 
     }
 }

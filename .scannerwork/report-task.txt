@@ -1,0 +1,6 @@
+projectKey=playground-f
+serverUrl=https://pktsonar.geekacademy.id
+serverVersion=9.9.7.96285
+dashboardUrl=https://pktsonar.geekacademy.id/dashboard?id=playground-f
+ceTaskId=AZO-zjqhxA9Cco8_qM_A
+ceTaskUrl=https://pktsonar.geekacademy.id/api/ce/task?id=AZO-zjqhxA9Cco8_qM_A

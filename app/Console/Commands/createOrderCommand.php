@@ -45,11 +45,9 @@ class CreateOrderCommand extends Command
      */
     public function handle()
     {
-        // Get the input parameters
         $productId = $this->option('product_id');
         $quantity = $this->option('quantity');
 
-        // Validate inputs
         if (!$productId || !$quantity) {
             $this->error('Please provide both product_id and quantity.');
             return 1;
@@ -61,26 +59,22 @@ class CreateOrderCommand extends Command
         }
 
         try {
-            // Call the OrderService to create the order
             $order = $this->orderService->createOrder($productId, $quantity);
 
-            // Provide feedback
             if (isset($order['success']) && !$order['success']) {
                 $this->error($order['message']);
                 return 1;
             }
 
-            // Success response
             $this->info('Order created successfully!');
             $this->line('Order ID: ' . $order['order']->id);
             $this->line('Total Price: ' . $order['order']->total_price);
 
         } catch (\Exception $e) {
-            // Handle errors
             $this->error('An error occurred while creating the order: ' . $e->getMessage());
             return 1;
         }
 
-        return 0;  // Return success
+        return 0;
     }
 }

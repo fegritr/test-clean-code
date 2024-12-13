@@ -50,21 +50,16 @@ class OrderService
      */
     public function cancelOrder(int $productId, int $quantity)
     {
-        // Check if the order needs to be canceled due to insufficient stock
-
-        // Revert the inventory update if the order is canceled
         $inventory = $this->inventoryService->getInventoryForProduct($productId);
 
         if ($inventory) {
-            // Update inventory to add the canceled quantity back
             $this->inventoryService->updateInventory($productId, $inventory->warehouse_id, $inventory->quantity + $quantity);
         }
 
-        // Create the canceled order record (without status)
         $order = Orders::create([
             'product_id' => $productId,
             'quantity' => $quantity,
-            'total_price' => 0,      // No price since the order is canceled
+            'total_price' => 0,    
         ]);
 
         return [

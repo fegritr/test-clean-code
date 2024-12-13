@@ -14,14 +14,13 @@ class InventoryService
 
     public function updateInventory(int $productId, int $warehouseId, int $quantity)
     {
-        // Mencari atau membuat data inventory baru untuk produk tersebut
-        $inventory = Inventory::updateOrCreate(
+       $inventory = Inventory::updateOrCreate(
             [
                 'product_id' => $productId,
                 'warehouse_id' => $warehouseId,
             ],
             [
-                'quantity' => $quantity, // Update the quantity in the inventory
+                'quantity' => $quantity,
             ]
         );
 
