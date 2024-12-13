@@ -2,14 +2,14 @@
 
 namespace App\Domains\Products\Services;
 
-use App\Domains\Products\Models\Product;
 use App\Domains\Products\Events\ProductCreated;
+use App\Domains\Products\Models\Products;
 
 class ProductService
 {
-    public function createProduct(array $data): Product
+    public function createProduct(array $data): Products
     {
-        $product = Product::create($data);
+        $product = Products::create($data);
 
         // Dispatch event
         ProductCreated::dispatch($product);

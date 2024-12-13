@@ -2,16 +2,16 @@
 
 namespace App\Domains\Products\Events;
 
-use App\Domains\Products\Models\Product;
+use App\Domains\Products\Models\Products;
 use Illuminate\Foundation\Events\Dispatchable;
 
 class ProductCreated
 {
     use Dispatchable;
 
-    public Product $product;
+    public Products $product;
 
-    public function __construct(Product $product)
+    public function __construct(Products $product)
     {
         $this->product = $product;
     }
