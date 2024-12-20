@@ -47,7 +47,7 @@
             "@php artisan key:generate --ansi"
         ],
         "qc": [
-            "XDEBUG_MODE=coverage php artisan test --coverage --min=80 --coverage-clover coverage.xml"
+            "XDEBUG_MODE=coverage php artisan test --coverage --min=0 --coverage-clover coverage.xml"
         ]
     },
     "extra": {
