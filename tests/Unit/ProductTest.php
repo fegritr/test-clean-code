@@ -1,5 +1,7 @@
 <?php
 
+use App\Domains\Products\Data\ProductData;
+
 test('it can create product', function () {
     $mock = Mockery::mock('App\Models\Product');
     $mock->shouldReceive('getAttribute')->with('name')->andReturn('Product 1');
@@ -15,15 +17,17 @@ test('it can create product', function () {
         ])
         ->andReturn($mock);
 
-    $data = new \App\Domains\Products\Data\ProductData(
+    $data = new ProductData(
         name: 'Product 1',
         description: 'Description 1',
         price: 100.00,
     );
+    $arrayData = $data->toArray();
+
 
     $service = new \App\Domains\Products\Services\ProductService($mock);
 
-    $result = $service->store($data);
+    $result = $service->createProduct($arrayData, 1, 100);
 
     expect($result->name)->toBe('Product 1')
         ->and($result->description)->toBe('Description 1')
@@ -41,7 +45,7 @@ test('it can create from request', function () {
         'description' => 'Description 1',
         'price' => 100.00,
     ]);
-    $data = \App\Domains\Products\Data\ProductData::fromRequest($request);
+    $data = ProductData::fromRequest($request);
 
     $mock->shouldReceive('create')
         ->once()
