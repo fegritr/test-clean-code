@@ -45,6 +45,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "qc": [
+            "XDEBUG_MODE=coverage php artisan test --coverage --min=80 --coverage-clover coverage.xml"
         ]
     },
     "extra": {
